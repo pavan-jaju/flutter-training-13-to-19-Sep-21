@@ -24,7 +24,7 @@ class Displayer2 extends StatelessWidget {
       color: Colors.orange,
       child: Center(
         child: Text(
-            "Current value of counter is ${context.watch<CounterModel>().counter2}"),
+            "Current value of counter2 is ${context.watch<CounterModel>().counter2}"),
       ),
     );
   }

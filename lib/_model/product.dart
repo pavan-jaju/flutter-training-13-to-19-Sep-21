@@ -4,7 +4,7 @@ class Product {
   late String id;
   late String name;
   String? description;
-  late List<Category> category;
+  // late List<Category> category;
   late String imageUrl;
   late double rate;
 
@@ -12,7 +12,7 @@ class Product {
     required this.id,
     required this.name,
     this.description,
-    required this.category,
+    // required this.category,
     required this.imageUrl,
     required this.rate,
   });
@@ -22,16 +22,16 @@ class Product {
     this.name = map["name"];
     this.description = map["description"];
     this.imageUrl = map["image"];
-    this.category = (map["category"] ?? [])
-        .map<Category>((e) => Category.fromMap(e))
-        .toList();
+    // this.category = (map["category"] ?? [])
+    //     .map<Category>((e) => Category.fromMap(e))
+    //     .toList();
     this.rate = double.parse((map["price"] ?? "0").toString());
   }
 
   Map<String, dynamic> toMap() => <String, dynamic>{
         "objectId": id,
         "name": name,
-        "category": category,
+        // "category": category,
         "description": description,
         "image": imageUrl,
         "price": rate

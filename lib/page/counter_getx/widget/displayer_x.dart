@@ -15,7 +15,10 @@ class DisplayerX extends StatelessWidget {
       child: Center(
         child: Obx(() {
           debugPrint("============== Displayer Obx");
-          return Text("Current value of counter is ${counterXModel.counter}");
+          return Text(
+            "Current value of counter is ${counterXModel.counter}",
+            key: ValueKey("counterxtext"),
+          );
         }),
       ),
     );
@@ -32,7 +35,7 @@ class DisplayerX2 extends StatelessWidget {
         child: Obx(() {
           debugPrint("============== Displayer2 Obx");
           return Text(
-              "Current value of counter is ${Get.find<CounterXModel>().counter2}");
+              "Current value of counter2 is ${Get.find<CounterXModel>().counter2}");
         }),
       ),
     );

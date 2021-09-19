@@ -12,6 +12,7 @@ class IncrementerX extends StatelessWidget {
       child: Column(
         children: [
           ElevatedButton(
+            key: ValueKey("increment1"),
             onPressed: () {
               Get.find<CounterXModel>().increament();
             },

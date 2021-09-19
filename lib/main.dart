@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_taining_app_1/_common/firebase_handler.dart';
 import 'package:flutter_taining_app_1/_repo/product_db_repo.dart';
 import 'package:flutter_taining_app_1/_repo/product_repo.dart';
 import 'package:flutter_taining_app_1/page/counter_getx/counter_x_model.dart';
@@ -19,7 +20,11 @@ import 'package:provider/provider.dart';
 // void main() => runApp(
 //     ChangeNotifierProvider(create: (_) => CounterModel(), child: MyApp()));
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await FirebaseHandler.init();
+
   Get.put(AppState());
   Get.put(ProductDbRepo());
   Get.put(ProductRepo());
@@ -37,6 +42,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       debugShowCheckedModeBanner: false,
+      // home: CounterXPage(),
       home: Obx(() {
         var state = Get.find<AppState>().state;
 

@@ -3,10 +3,13 @@ import 'package:flutter_taining_app_1/_common/preference_utils.dart';
 import 'package:flutter_taining_app_1/_model/product.dart';
 import 'package:flutter_taining_app_1/_model/user.dart';
 import 'package:flutter_taining_app_1/_repo/product_repo.dart';
+import 'package:flutter_taining_app_1/page/home/_state/home_page_x.dart';
 import 'package:get/get.dart';
 
 class AppState extends GetxController {
   ProductRepo get _productRepo => Get.find();
+
+  HomePageX get homePageState => Get.find();
 
   var state = APP_STATE_ENUM.UNKNOWN.obs;
 
@@ -16,6 +19,8 @@ class AppState extends GetxController {
 
   init() async {
     products.value = await _productRepo.fetchProducts();
+
+    await homePageState.loadProductsFromDb();
 
     loggedInUser.value = await PreferenceUtils.getSignedInState();
     if (loggedInUser.value != null) {

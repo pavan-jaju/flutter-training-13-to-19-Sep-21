@@ -17,11 +17,9 @@ class ProductDbRepo {
     await _db.insert(TABLE_NAME, product.toMap());
   }
 
-  Future<List<Product>> listAll() async {
+  Future<List<Product>> listAll({String? filter}) async {
     final _db = await db;
-    var res = await _db.query(
-      TABLE_NAME,
-    );
+    var res = await _db.query(TABLE_NAME);
     return res.map<Product>((p) => Product.fromMap(p)).toList();
   }
 

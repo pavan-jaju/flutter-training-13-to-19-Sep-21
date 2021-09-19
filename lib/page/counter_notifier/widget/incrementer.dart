@@ -9,6 +9,7 @@ class Incrementer extends StatelessWidget {
     return Container(
       child: Center(
         child: ElevatedButton(
+          key: ValueKey("increment_notifier_1"),
           onPressed: () {
             Provider.of<CounterModel>(context, listen: false).increment();
             // context.read<CounterModel>().increment();

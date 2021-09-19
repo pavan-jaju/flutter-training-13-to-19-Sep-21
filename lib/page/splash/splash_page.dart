@@ -12,11 +12,25 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
 //  String title = "Initial value";
 
+  double width = 0;
+  double height = 0;
+
+  double opacity = 0;
+
+  var widthTween = Tween<double>(begin: 0.0, end: 18.0);
+
   @override
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 2), () {
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      setState(() {
+        height = 100;
+        opacity = 1;
+      });
+    });
+
+    Future.delayed(Duration(seconds: 5), () {
       Get.find<AppState>().init();
     });
   }
@@ -60,12 +74,22 @@ class _SplashPageState extends State<SplashPage> {
             //     });
             //   },
             // ),
-            Text(
-              "Hey There",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline2
-                  ?.copyWith(color: Colors.purple),
+            AnimatedOpacity(
+              opacity: opacity,
+              duration: Duration(seconds: 1),
+              child: AnimatedContainer(
+                duration: Duration(seconds: 2),
+                curve: Curves.fastOutSlowIn,
+                // width: width,
+                height: height,
+                child: Text(
+                  "Hey There",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline2
+                      ?.copyWith(color: Colors.purple),
+                ),
+              ),
             ),
             SizedBox(height: 32),
             CircularProgressIndicator(
